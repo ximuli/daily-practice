@@ -30,3 +30,44 @@ leetcode 简单题 #13 罗马数字转整数
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 
 花费一个半小时，没有搞出来。
+
+看了下题解，其实我思路还是有一点儿的，比如说使用 replace，但是没有想到把特殊的罗马数字替换成abc方便做循环累加，再比如说想到了要把罗马数字转换成阿拉伯数字做累加，但是后续的思路和整体实现上不够好，最终写出来的有bug。
+
+以下是看过题解之后写出来的代码：
+
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function(s) {
+    let result = 0
+    // I V X  L  C   D   M    IV IX XL XC CD  CM
+    // 1 5 10 50 100 500 1000 4  9  40 90 400 900
+    s = s.replace(/IV/g, 'a')
+         .replace(/IX/g, 'b')
+         .replace(/XL/g, 'c')
+         .replace(/XC/g, 'd')
+         .replace(/CD/g, 'e')
+         .replace(/CM/g, 'f')
+    s.split('').forEach(item => {
+        switch(item){
+            case 'I': result += 1; break;
+            case 'V': result += 5; break;
+            case 'X': result += 10; break;
+            case 'L': result += 50; break;
+            case 'C': result += 100; break;
+            case 'D': result += 500; break;
+            case 'M': result += 1000; break;
+            case 'a': result += 4; break;
+            case 'b': result += 9; break;
+            case 'c': result += 40; break;
+            case 'd': result += 90; break;
+            case 'e': result += 400; break;
+            case 'f': result += 900; break;
+        }    
+    })
+    return result
+};
+```
+
