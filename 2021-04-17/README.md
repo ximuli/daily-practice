@@ -36,5 +36,32 @@ var searchInsert = function(nums, target) {
 };
 ```
 
-官方题解是使用二分查找法。
+官方题解是使用二分查找法，其实二分查找的思路还算简单，但实际操作起来总是不知道该如何判断边界。
+
+我看了几个题解以后磕磕绊绊写出以下代码：
+
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number}
+ */
+var searchInsert = function(nums, target) {
+    // 若target比nums[lenght-1]大则说明插入位置应为最后一个
+    let leftIndex = 0, rightIndex = nums.length - 1
+    if (target > nums[rightIndex]) { return nums.length }
+    while (leftIndex < rightIndex) {
+        // 取到中间位置的索引
+        let midIndex = leftIndex + Math.floor((rightIndex - leftIndex)/2)
+        // 若中间位置的值小于target，则缩小左侧范围
+        if (nums[midIndex] < target) {
+            leftIndex = midIndex + 1
+        } else {
+            // 否则缩小右侧范围
+            rightIndex = midIndex
+        }
+    }
+    return leftIndex
+};
+```
 
