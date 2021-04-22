@@ -27,3 +27,29 @@ var lengthOfLastWord = function(s) {
     return result
 };
 ```
+
+但我看题解里有说不要用api的，花时间又看了一下题解和评论。代码如下：
+
+```js
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLastWord = function(s) {
+    // 计数为0，代表最后一个单词的长度
+    let count = 0
+    // 从末尾开始循环
+    for (let i = s.length - 1; i >= 0; i--) {
+        // 为空则跳过，若已计数，则直接退出循环
+        if (s[i] === ' ') {
+            if (count === 0) {
+                continue
+            }
+            break
+        } else { // 不为空则开始计数
+            count++
+        }
+    }
+    return count
+};
+```
