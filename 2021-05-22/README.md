@@ -34,16 +34,18 @@ leetcode 简单题 #69 x的平方根
  * @return {number}
  */
 var mySqrt = function(x) {
-    let left = 0, right = x, ans = -1
+    let left = 0, right = x, mid = Math.floor((left + right) / 2)
+    // mid = ~~((left + right) / 2)
     while (left <= right) {
-        const mid = left + (right - left) / 2
-        if (mid * mid <= x) {
-            ans = mid
-            left = mid + 1
-        } else {
+        if (mid * mid === x) {
+            return mid
+        } else if (mid * mid > x) {
             right = mid - 1
+        } else {
+            left = mid + 1
         }
+        mid = Math.floor((left + right) / 2)
     }
-    return ans
+    return mid
 };
 ```
