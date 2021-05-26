@@ -4,6 +4,13 @@
 
 基于 window.requestAnimationFrame 写一个动画函数，将一个 DOM 元素 ele 在 duration 内，从当前位置向右线平移 moveLength 像素
 
+参考链接：
+
+[1. 掘金-requestAnimationFrame](https://juejin.cn/search?query=requestanimationframe)
+
+[2. 张鑫旭-requestAnimationFrame](https://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/)
+
+
 题目2:
 
 写一个节流函数 (限制一个函数在一定时间内只执行一次)
