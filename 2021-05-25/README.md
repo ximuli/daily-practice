@@ -1,21 +1,44 @@
 # 五道面试题
 
-题目1:
+## 题目1
 
 基于 window.requestAnimationFrame 写一个动画函数，将一个 DOM 元素 ele 在 duration 内，从当前位置向右线平移 moveLength 像素
 
+```js
+// <div id="box" class="box"></div>
+// .box { width: 100px; height: 100px; background-color: red; }
+
+function y(id, duration, moveLength) {
+  const ele = document.getElementById(id)
+  let start
+  function step(timestamp) {
+    if (start === undefined) { start = timestamp }
+    const temp = timestamp - start
+    ele.style.transform = `translateX(${Math.min(0.1 * temp, moveLength)}px)`
+    if (temp < duration) {
+      window.requestAnimationFrame(step)
+    }
+  }
+  window.requestAnimationFrame(step)
+}
+
+y('box', 1000, 100)
+```
+
 参考链接：
 
-[1. 掘金-requestAnimationFrame](https://juejin.cn/search?query=requestanimationframe)
+[1. MDN-requestAnimationFrame](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/requestAnimationFrame)
 
-[2. 张鑫旭-requestAnimationFrame](https://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/)
+[2. 掘金-requestAnimationFrame](https://juejin.cn/search?query=requestanimationframe)
+
+[3. 张鑫旭-requestAnimationFrame](https://www.zhangxinxu.com/wordpress/2013/09/css3-animation-requestanimationframe-tween-%e5%8a%a8%e7%94%bb%e7%ae%97%e6%b3%95/)
 
 
-题目2:
+## 题目2
 
 写一个节流函数 (限制一个函数在一定时间内只执行一次)
 
-题目3:
+## 题目3
 
 有如下文本，请提取文本中的所有 URL 
 
@@ -23,7 +46,7 @@
 const text = "这是一段文本https://www.showmebug.com/pads/LKGVGT这是一段文本http://www.showmebug.com这是一段文本http://showmebug.comm这是一段文本"
 ```
 
-题目4:
+## 题目4
 
 输入一个数组 nums，对于其中每个元素 nums[i]，请统计数组中比它小的所有数字的数目。
 
@@ -35,7 +58,7 @@ const text = "这是一段文本https://www.showmebug.com/pads/LKGVGT这是一�
 
 输出：[4,0,1,1,3]
 
-题目5:
+## 题目5
 
 实现 atoi，将字符串转为整数。
 
