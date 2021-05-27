@@ -38,6 +38,32 @@ y('box', 1000, 100)
 
 写一个节流函数 (限制一个函数在一定时间内只执行一次)
 
+```js
+// 写法一
+function throttle (fn, wait) {
+  let canUse = true
+  return function() {
+    if (canUse) {
+      fn.apply(this, arguments)
+      canUse = false
+      setTimeout(() => {
+        canUse = true
+      }, wait)
+    }
+  }
+}
+
+```
+
+参考链接：
+
+[1. throttle 在 scroll 事件的应用-WangDoc](https://wangdoc.com/javascript/events/common.html#scroll-%E4%BA%8B%E4%BB%B6)
+
+[2. debounce 函数-WangDoc](https://wangdoc.com/javascript/async/timer.html#%E5%AE%9E%E4%BE%8B%EF%BC%9Adebounce-%E5%87%BD%E6%95%B0)
+
+
+
+
 ## 题目3
 
 有如下文本，请提取文本中的所有 URL 
