@@ -72,6 +72,20 @@ function throttle (fn, wait) {
 const text = "这是一段文本https://www.showmebug.com/pads/LKGVGT这是一段文本http://www.showmebug.com这是一段文本http://showmebug.comm这是一段文本"
 ```
 
+其实这道题超级简单，就是考察JavaScript中基本的正则表达式用法。
+
+```js
+function getUrls(text) {
+  const reg = /http[a-zA-Z:\/.]+/g
+  return text.match(reg)
+}
+getUrls(text) // 返回 null 则表示没有匹配的结果
+```
+
+参考链接：
+
+[RegExp 对象-WangDoc](https://wangdoc.com/javascript/stdlib/regexp.html)
+
 ## 题目4
 
 输入一个数组 nums，对于其中每个元素 nums[i]，请统计数组中比它小的所有数字的数目。
