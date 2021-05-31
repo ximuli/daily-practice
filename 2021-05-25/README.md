@@ -55,12 +55,32 @@ function throttle (fn, wait) {
 
 ```
 
+联想到另一个，防抖。（在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。）
+
+```js
+function debounce(fn, delay) {
+  let timer = null
+  return function() {
+    let context = this
+    let _args = arguments
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      fn.apply(context, _args)
+    }, delay)
+  }
+}
+```
+
+
 参考链接：
 
 [1. throttle 在 scroll 事件的应用-WangDoc](https://wangdoc.com/javascript/events/common.html#scroll-%E4%BA%8B%E4%BB%B6)
 
 [2. debounce 函数-WangDoc](https://wangdoc.com/javascript/async/timer.html#%E5%AE%9E%E4%BE%8B%EF%BC%9Adebounce-%E5%87%BD%E6%95%B0)
 
+[3. 7分钟理解JS的节流、防抖及使用场景](https://juejin.cn/post/6844903669389885453)
 
 
 
