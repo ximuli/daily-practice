@@ -48,3 +48,42 @@ var isValid = function(s) {
 };
 ```
 
+2021-06-02更新：
+
+看过专栏中关于「栈」的讲解之后，对这道题有了更加具体的认识。其实就是在考察「栈」。
+
+> 后进者先出，先进者后出。
+
+```js
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    // 奇数位长度肯定无效
+    // if (s.length % 2 === 1) { return false }
+    let result = []
+    // 将对应的括号存起来方便取用
+    const obj = { ')': '(', ']': '[', '}': '{' }
+    // 切割并遍历整个字符串
+    const tempArr = s.split('')
+    for (let i =0; i < tempArr.length; i++) {
+        // 遇到左括号则存到新数组中
+        if (Object.values(obj).includes(tempArr[i])) {
+            result.push(tempArr[i])
+        } else {
+            // 遇到右括号先看一下新数组中最后一位是否为对应的左括号
+            // 对应则直接取出
+            if (result[result.length -1] === obj[tempArr[i]]) {
+                result.pop()
+            } else {
+                // 不对应则直接返回无效
+                return false
+                // break 不可以用 break，需直接退出函数
+            }
+        }
+    }
+    return result.length === 0
+};
+```
+
