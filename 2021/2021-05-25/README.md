@@ -118,6 +118,29 @@ getUrls(text) // 返回 null 则表示没有匹配的结果
 
 输出：[4,0,1,1,3]
 
+```js
+// 两层循环
+function x(arr) {
+  let result = []
+  for (let i = 0; i < arr.length; i++) {
+    let count = 0
+    for (let j = 0; j < arr.length; j++) {
+      if (i === j) { continue }
+      else {
+        if (arr[i] > arr[j]) {
+          count++
+        }
+      }
+    }
+    result.push(count)
+  }
+  
+  return result
+}
+
+console.log(x([8,1,2,2,3]))
+```
+
 ## 题目5
 
 实现 atoi，将字符串转为整数。
