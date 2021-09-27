@@ -6,9 +6,9 @@ leetcode 简单题 #206 反转链表
 
 [题目地址](https://leetcode-cn.com/problems/reverse-linked-list/)
 
-对我这个半路出家的人而且是写 JavaScript 的人来说，真的很难理解链表。最近在看极客时间《数据结构与算法之美》的专栏，刚看到链表这几节。
+看着该 leetcode 题目评论的 Java 版本写了一个 JS 版。
 
-看着题目评论的 Java 版本写了一个 JS 版。
+> 思路：就是把每个节点的 next 指向它的前驱节点即可。
 
 ```js
 /**
@@ -38,3 +38,8 @@ var reverseList = function(head) {
 };
 ```
 
+# 参考链接
+
+1. [反转吧，链表！](https://mp.weixin.qq.com/s/XJdixjh7gLsknBrgNxiJiA)
+2. [JS中的算法与数据结构——链表(Linked-list)](https://juejin.cn/post/6844903498362912775)
+3. 极客时间《数据结构与算法之美》的专栏 
