@@ -1,9 +1,9 @@
 /*
  * @Author: leyili
  * @Date: 2022-02-12 18:09:21
- * @LastEditTime: 2022-02-12 22:06:04
+ * @LastEditTime: 2022-02-12 22:43:17
  * @LastEditors: leyili
- * @Description: 
+ * @Description: 第六章 链表 6.2 双向链表
  * @FilePath: /daily-practice/但是还有书籍/学习JavaScript数据结构与算法/doubly-linked-list.js
  */
 import { Node, LinkedList, defaultEquals } from './linked-list.js'
@@ -18,11 +18,11 @@ class DoublyNode extends Node {
 class DoublyLinkedList extends LinkedList {
   constructor(equalsFn = defaultEquals) {
     super(equalsFn)
-    this.tail = undefined
+    this.tail = null
   }
   insert(element, index) {
     // 检查临界值
-    if (index < 0 || index >= this.count) { return false }
+    if (index < 0 || index > this.count) { return false }
     const node = new DoublyNode(element)
     let current = this.head
     if (index === 0) {
@@ -50,9 +50,39 @@ class DoublyLinkedList extends LinkedList {
     this.count++
     return true
   }
+  removeAt(index) {
+    // 检查临界值
+    if (index < 0 || index >= this.count) { return false }
+    let current = this.head
+    if (index === 0) {
+      this.head = current.next
+      if (this.count === 1) {
+        this.tail = null
+      } else {
+        this.head.prev = null
+      }
+    } else if (index === this.count - 1) { //要删除的是最后一个元素
+      current = this.tail
+      this.tail = current.prev
+      this.tail.next = null
+    } else {
+      current = this.getElementAt(index)
+      const previous = current.prev
+      previous.next = current.next
+      current.next.prev = previous
+    }
+    this.count--
+    return current.element
+  }
 }
 
 const list = new DoublyLinkedList()
+list.insert(1, 0)
+list.insert(3, 1)
+list.insert(5, 2)
 console.log('list', list)
 
-export default {}
+setTimeout(() => {
+  list.removeAt(2)
+  console.log('list', list)
+}, 2000)
