@@ -1,7 +1,7 @@
 /*
  * @Author: leyili
  * @Date: 2022-02-11 20:16:17
- * @LastEditTime: 2022-02-12 13:06:03
+ * @LastEditTime: 2022-02-12 14:41:06
  * @LastEditors: leyili
  * @Description: 第六章 链表 6.1 链表数据结构
  * @FilePath: /daily-practice/但是还有书籍/学习JavaScript数据结构与算法/array-list.js
@@ -30,7 +30,24 @@ class linkedList {
     }
     this.count++
   }
-  insert(element, position) { }
+  // 向链表的特定位置插入一个新元素
+  insert(element, index) {
+    // 检查临界值
+    if (index < 0 || index >= this.count) { return false }
+    const node = new Node(element)
+    if (index === 0) {
+      const current = this.head
+      node.next = current
+      this.head = node
+    } else {
+      const previous = this.getElementAt(index - 1)
+      const current = previous.next
+      node.next = current
+      previous.next = node
+    }
+    this.count++
+    return true
+  }
   // 返回链表中特定位置的元素
   getElementAt(index) {
     // 检查临界值
@@ -43,9 +60,21 @@ class linkedList {
   }
   // 从链表中移除一个元素
   remove(element) {
-
+    // 复用代码
+    const index = this.indexOf(element)
+    return this.removeAt(index)
   }
-  indexOf(element) { }
+  // 返回元素在链表中的索引
+  indexOf(element) {
+    let current = this.head
+    for (let i = 0; i < this.count; i++) {
+      if (this.equalsFn(element, current.element)) {
+        return i
+      }
+      current = current.next
+    }
+    return -1
+  }
   // 从链表的特定位置移除一个元素
   removeAt(index) {
     // 检查临界值
@@ -73,9 +102,27 @@ class linkedList {
     this.count--
     return current.element
   }
-  isEmpty() { }
-  size() { }
-  toString() { }
+  isEmpty() {
+    return this.size() === 0
+  }
+  size() {
+    return this.count
+  }
+  getHead() {
+    return this.head
+  }
+  toString() {
+    if (this.head === null) { return '' }
+    //初始字符串即为第一个元素的字符串表示
+    let objString = `${this.head.element}`
+    // 从第二个开始迭代
+    let current = this.head.next
+    for (let i = 1; i < this.count; i++) {
+      objString = `${objString}, ${current.element}`
+      current = current.next
+    }
+    return objString
+  }
 }
 
 class Node {
@@ -90,7 +137,4 @@ function defaultEquals(a, b) {
 }
 
 const list = new linkedList()
-list.push(15)
-list.push(10)
-list.push({ text: '爱你哟' })
 console.log('list', list)
