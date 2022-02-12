@@ -1,12 +1,12 @@
 /*
  * @Author: leyili
  * @Date: 2022-02-11 20:16:17
- * @LastEditTime: 2022-02-12 14:41:06
+ * @LastEditTime: 2022-02-12 18:22:33
  * @LastEditors: leyili
  * @Description: 第六章 链表 6.1 链表数据结构
- * @FilePath: /daily-practice/但是还有书籍/学习JavaScript数据结构与算法/array-list.js
+ * @FilePath: /daily-practice/但是还有书籍/学习JavaScript数据结构与算法/linked-list.js
  */
-class linkedList {
+class LinkedList {
   constructor(equalsFn = defaultEquals) {
     // 存储链表中的元素数量
     this.count = 0
@@ -136,5 +136,7 @@ function defaultEquals(a, b) {
   return a === b
 }
 
-const list = new linkedList()
-console.log('list', list)
+// const list = new LinkedList()
+// console.log('list', list)
+
+export { Node, LinkedList, defaultEquals }
