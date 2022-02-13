@@ -1,7 +1,7 @@
 /*
  * @Author: leyili
  * @Date: 2022-02-12 18:09:21
- * @LastEditTime: 2022-02-12 22:43:17
+ * @LastEditTime: 2022-02-13 19:38:44
  * @LastEditors: leyili
  * @Description: 第六章 链表 6.2 双向链表
  * @FilePath: /daily-practice/但是还有书籍/学习JavaScript数据结构与算法/doubly-linked-list.js
@@ -76,13 +76,13 @@ class DoublyLinkedList extends LinkedList {
   }
 }
 
-const list = new DoublyLinkedList()
-list.insert(1, 0)
-list.insert(3, 1)
-list.insert(5, 2)
-console.log('list', list)
+// const list = new DoublyLinkedList()
+// list.insert(1, 0)
+// list.insert(3, 1)
+// list.insert(5, 2)
+// console.log('list', list)
 
-setTimeout(() => {
-  list.removeAt(2)
-  console.log('list', list)
-}, 2000)
+// setTimeout(() => {
+//   list.removeAt(2)
+//   console.log('list', list)
+// }, 2000)
