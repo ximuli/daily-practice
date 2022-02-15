@@ -1,7 +1,7 @@
 /*
  * @Author: leyili
  * @Date: 2022-02-11 20:16:17
- * @LastEditTime: 2022-02-12 18:22:33
+ * @LastEditTime: 2022-02-15 21:49:00
  * @LastEditors: leyili
  * @Description: 第六章 链表 6.1 链表数据结构
  * @FilePath: /daily-practice/但是还有书籍/学习JavaScript数据结构与算法/linked-list.js
@@ -33,7 +33,7 @@ class LinkedList {
   // 向链表的特定位置插入一个新元素
   insert(element, index) {
     // 检查临界值
-    if (index < 0 || index >= this.count) { return false }
+    if (index < 0 || index > this.count) { return false }
     const node = new Node(element)
     if (index === 0) {
       const current = this.head
