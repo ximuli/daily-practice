@@ -1,3 +1,11 @@
+<!--
+ * @Author: leyili
+ * @Date: 2021-06-01 21:30:19
+ * @LastEditTime: 2022-02-20 21:39:33
+ * @LastEditors: leyili
+ * @Description: 
+ * @FilePath: /daily-practice/2021/2021-06-01/README.md
+-->
 # 今日刷题
 
 leetcode 简单题 #206 反转链表
@@ -27,7 +35,7 @@ var reverseList = function(head) {
     while (current) {
         // 暂存下一节点
         let temp = current.next
-        // 将当前节点指向上一节点
+        // 将当前节点由指向下一个节点改为指向上一个节点
         current.next = prev
         // 前指针后移
         prev = current
