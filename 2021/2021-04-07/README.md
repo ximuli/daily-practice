@@ -1,3 +1,11 @@
+<!--
+ * @Author: leyili
+ * @Date: 2021-04-07 14:15:12
+ * @LastEditTime: 2022-02-23 07:18:44
+ * @LastEditors: leyili
+ * @Description: 
+ * @FilePath: /daily-practice/2021/2021-04-07/README.md
+-->
 # 今日刷题
 leetcode 简单题 #1 两数之和
 
@@ -47,3 +55,48 @@ var twoSum = function(nums, target) {
 我大概的理解是 O(n) 这样的表述意思就是该算法的主要代码运行了 n 次。但我也是刚开始学，其实理解还不够透彻。
 
 具体内容在《大话数据结构》的第二章--算法。
+
+# 更新于2022-02-23
+
+上述解法有点问题，就是 `if (index2 !== -1)` 判断这里并没有考虑到 **数组中同一个元素在答案里不能重复出现**。
+
+思路方面，此次复习也首先想到了要假设一个值，但是没有明确想出来原来这个答案，反而是看到题目的进阶提示写的 *你可以想出一个时间复杂度小于 O(n2) 的算法吗？*之后我明白了可以用双层循环来做，所以直接上了双层循环，只需要判断循环内外层的枚举值相加等于 target 并且两个数的索引值不同即可。
+
+代码如下：
+
+```js
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+var twoSum = function(nums, target) {
+    // 方法一 双层循环
+    let result = []
+    for(let i = 0; i < nums.length; i++) {
+        for(let j = 0; j < nums.length; j++) {
+            // 判断内外两层数字相加是否等于target并且index不相等
+            if (nums[i] + nums[j] === target && i !== j) {
+                result = [i, j]
+            }
+        
+        }
+    }
+    return result
+
+    // 方法二 假设
+    // let result = []
+    // nums.forEach((num, index) => {
+    //     // 假设其中一个数字就是 num，那么另一个数字就是 num2
+    //     let num2 = target - num
+    //     // 获取 num2 的索引值
+    //     let index2 = nums.indexOf(num2)
+    //     // 判断索引是否有值并且两个数的索引不相等
+    //     if (index2 !== -1 && index !== index2) {
+    //         result[0] = index
+    //         result[1] = index2
+    //     }
+    // })
+    // return result
+};
+```
